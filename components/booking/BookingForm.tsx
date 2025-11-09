@@ -102,7 +102,7 @@ const BookingForm: React.FC = () => {
       };
       
       // const response = await axios.post("/api/bookings", submissionData);
-      const response = await axios.post(\${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings`, submissionData);`
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/bookings`, submissionData);
       
       await new Promise(resolve => setTimeout(resolve, 1500)); 
       if (response.status === 201 || response.status === 200 || response.data?.success === true) {

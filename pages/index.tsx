@@ -100,23 +100,25 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
-    const fetchProperties = async () => {
-      try {
-        // const response = await axios.get("/api/properties");
-        const response = await axios.get(\${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`);`
-        // Use response data if available, otherwise fall back to the sample data
-        const data = response?.data ?? (await import('@/constants')).PROPERTYLISTINGSAMPLE;
-        setProperties(data);
+      const fetchProperties = async () => {
+        try {
+          const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/properties`); 
+          
+          const data = response?.data ?? (await import('@/constants')).PROPERTYLISTINGSAMPLE;
+          setProperties(data);
 
-      } catch (error) {
-        console.error("Error fetching properties:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
+        } catch (error) {
+          console.error("Error fetching properties:", error);
+          const data = (await import('@/constants')).PROPERTYLISTINGSAMPLE;
+          setProperties(data);
 
-    fetchProperties();
-  }, []);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      fetchProperties();
+    }, []);
 
   return (
     <div className="container mx-auto px-4">
