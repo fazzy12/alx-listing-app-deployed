@@ -6,9 +6,6 @@ const nextConfig: NextConfig = {
   images: {
     domains: ['example.com'],
   },
-  turbo: {
-    root: '/home/fazzy/alx-listing-app-03',
-  },
 };
 
 export default nextConfig;
